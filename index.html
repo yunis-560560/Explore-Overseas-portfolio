@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Overseas - Where Dreams Take Flight</title>
+    <meta name="description"
+        content="Explore Overseas is a trusted visa assistance platform. Tourist, Business, Student & Work visas for 100+ countries. Fast, easy & secure.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <span><i class="fa-solid fa-phone"></i> +91 95158 13111</span>
+            <span><i class="fa-solid fa-envelope"></i> support@eovisas.com</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bangalore | Mumbai | Hyderabad</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Explore Overseas" style="max-height:55px;">
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#heroSection">Home</a>
+            <a href="#aboutSection">About</a>
+            <a href="#servicesSection">Services</a>
+            <a href="#packagesSection">Packages</a>
+            <a href="#destinationsSection">Destinations</a>
+            <a href="#contactSection">Contact</a>
+        </div>
+        <button class="btn-primary"
+            onclick="document.getElementById('contactSection').scrollIntoView({behavior:'smooth'})">Apply Now</button>
+        <div class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fa-solid fa-bars"></i></div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="heroSection">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge"><i class="fa-solid fa-shield-halved"></i> MEA Approved Visa Assistance</div>
+            <h1>Your Journey Starts <span class="gradient-text">Here.</span></h1>
+            <p>Fast, secure & stress-free visa assistance for 100+ countries. We guide you every step of the way.</p>
+            <div class="search-bar-wrap">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="destSearch" placeholder="Search destination (e.g. Dubai, Canada, UK...)"
+                        aria-label="Search destination" autocomplete="off">
+                    <button class="btn-search" onclick="searchDest()"><i class="fa-solid fa-arrow-right"></i>
+                        Search</button>
+                </div>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+            <div class="hero-tags">
+                <span onclick="fillSearch('UAE')">UAE</span>
+                <span onclick="fillSearch('USA')">USA</span>
+                <span onclick="fillSearch('UK')">UK</span>
+                <span onclick="fillSearch('Canada')">Canada</span>
+                <span onclick="fillSearch('Australia')">Australia</span>
+                <span onclick="fillSearch('Schengen')">Schengen</span>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat"><span class="count" data-target="70">0</span>+<p>Countries</p>
+            </div>
+            <div class="hero-stat"><span class="count" data-target="98">0</span>%<p>Success Rate</p>
+            </div>
+            <div class="hero-stat"><span class="count" data-target="2000">0</span>+<p>Happy Clients</p>
+            </div>
+            <div class="hero-stat"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><span> 4.9</span>
+                <p>Customer Rating</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="aboutSection">
+        <div class="container about-grid">
+            <div class="about-text">
+                <div class="section-tag">Who We Are</div>
+                <h2>Trusted Visa Partner <br>Since <span class="gradient-text">2023</span></h2>
+                <p>Explore Overseas is a professional visa assistance platform dedicated to making international travel
+                    simple, fast, and stress-free. We help individuals and families apply for visas through a smooth,
+                    fully guided online process.</p>
+                <p style="margin-top:15px;">We are not affiliated with any government authority. We provide expert
+                    guidance, documentation support, and end-to-end assistance to improve your approval chances.</p>
+                <div class="about-features">
+                    <div class="af-item"><i class="fa-solid fa-check-circle"></i> Expert documentation support</div>
+                    <div class="af-item"><i class="fa-solid fa-check-circle"></i> Transparent, no hidden charges</div>
+                    <div class="af-item"><i class="fa-solid fa-check-circle"></i> Real-time application tracking</div>
+                    <div class="af-item"><i class="fa-solid fa-check-circle"></i> Dedicated support manager</div>
+                </div>
+            </div>
+            <div class="about-cards">
+                <div class="about-card"><i class="fa-solid fa-brain"></i>
+                    <h4>Expertise</h4>
+                    <p>In-depth knowledge of immigration policies across 100+ countries.</p>
+                </div>
+                <div class="about-card"><i class="fa-solid fa-file-signature"></i>
+                    <h4>Documentation</h4>
+                    <p>Thorough support in all required paperwork to reduce rejections.</p>
+                </div>
+                <div class="about-card"><i class="fa-solid fa-shield-halved"></i>
+                    <h4>Trustworthy</h4>
+                    <p>Built on integrity, reliability and professional standards.</p>
+                </div>
+                <div class="about-card"><i class="fa-solid fa-face-smile"></i>
+                    <h4>Satisfaction</h4>
+                    <p>We go above and beyond to exceed every client's expectations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="servicesSection">
+        <div class="container">
+            <div class="section-tag center">What We Offer</div>
+            <h2 class="center">Our Visa <span class="gradient-text">Services</span></h2>
+            <p class="section-sub center">Complete end-to-end visa assistance for all travel purposes.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="sc-icon blue"><i class="fa-solid fa-umbrella-beach"></i></div>
+                    <h3>Tourist Visa</h3>
+                    <p>Explore the world with ease. We assist with tourist visa applications for top global
+                        destinations.</p>
+                    <ul>
+                        <li>Document verification</li>
+                        <li>Application filing</li>
+                        <li>Status tracking</li>
+                    </ul>
+                    <a href="#contactSection" class="sc-link">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="sc-icon green"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Business Visa</h3>
+                    <p>Travel for meetings, conferences, and corporate events with our business visa support.</p>
+                    <ul>
+                        <li>Invitation letter guidance</li>
+                        <li>Financial proof support</li>
+                        <li>Fast-track processing</li>
+                    </ul>
+                    <a href="#contactSection" class="sc-link">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="sc-icon purple"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Student Visa</h3>
+                    <p>Study abroad with confidence. We guide students through admissions and visa applications.</p>
+                    <ul>
+                        <li>University admission support</li>
+                        <li>Financial documentation</li>
+                        <li>Interview preparation</li>
+                    </ul>
+                    <a href="#contactSection" class="sc-link">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages-section" id="packagesSection">
+        <div class="container">
+            <div class="section-tag center">Plans</div>
+            <h2 class="center">Service <span class="gradient-text">Packages</span></h2>
+            <p class="section-sub center">Flexible plans tailored to your needs. No hidden charges.</p>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="pkg-label">Basic</div>
+                    <div class="pkg-price">Get a Quote</div>
+                    <p>Perfect for self-guided applicants who need a checklist and basic direction.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Document checklist</li>
+                        <li><i class="fa-solid fa-check"></i> Application guidance</li>
+                        <li><i class="fa-solid fa-check"></i> Email support</li>
+                    </ul>
+                    <a href="#contactSection" class="pkg-btn outline">Get Started</a>
+                </div>
+                <div class="package-card featured">
+                    <div class="pkg-badge">Most Popular</div>
+                    <div class="pkg-label">Standard</div>
+                    <div class="pkg-price">Get a Quote</div>
+                    <p>Complete assistance from start to finish for a smooth visa journey.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Full documentation support</li>
+                        <li><i class="fa-solid fa-check"></i> Application filling</li>
+                        <li><i class="fa-solid fa-check"></i> Regular status updates</li>
+                        <li><i class="fa-solid fa-check"></i> Priority chat support</li>
+                    </ul>
+                    <a href="#contactSection" class="pkg-btn solid">Get Started</a>
+                </div>
+                <div class="package-card">
+                    <div class="pkg-label">Premium</div>
+                    <div class="pkg-price">Get a Quote</div>
+                    <p>White-glove service with a dedicated manager for complex applications.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> End-to-end processing</li>
+                        <li><i class="fa-solid fa-check"></i> Dedicated support manager</li>
+                        <li><i class="fa-solid fa-check"></i> Fast-track assistance</li>
+                        <li><i class="fa-solid fa-check"></i> Real-time updates</li>
+                        <li><i class="fa-solid fa-check"></i> Priority handling</li>
+                    </ul>
+                    <a href="#contactSection" class="pkg-btn outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="destinations-section" id="destinationsSection">
+        <div class="container">
+            <div class="section-tag center">Where We Go</div>
+            <h2 class="center">Popular <span class="gradient-text">Destinations</span></h2>
+            <p class="section-sub center">We assist with visa applications for 100+ countries worldwide.</p>
+            <div class="dest-grid">
+                <div class="dest-card"><img src="assets/images/dest_dubai.png" alt="UAE Dubai">
+                    <div class="dest-overlay">
+                        <h3>UAE</h3>
+                        <p>Tourist &middot; Business &middot; Work</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+                <div class="dest-card"><img src="assets/images/dest_usa.png" alt="USA">
+                    <div class="dest-overlay">
+                        <h3>USA</h3>
+                        <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+                <div class="dest-card"><img src="assets/images/dest_uk.png" alt="United Kingdom">
+                    <div class="dest-overlay">
+                        <h3>UK</h3>
+                        <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+                <div class="dest-card"><img src="assets/images/dest_canada.png" alt="Canada">
+                    <div class="dest-overlay">
+                        <h3>Canada</h3>
+                        <p>Tourist &middot; Student &middot; PR</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+                <div class="dest-card"><img src="assets/images/dest_australia.png" alt="Australia">
+                    <div class="dest-overlay">
+                        <h3>Australia</h3>
+                        <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+                <div class="dest-card"><img src="assets/images/dest_schengen.png" alt="Europe Schengen">
+                    <div class="dest-overlay">
+                        <h3>Schengen</h3>
+                        <p>Tourist &middot; Business</p><a href="#contactSection" class="dest-btn">Apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="howSection">
+        <div class="container">
+            <div class="section-tag center">Simple Process</div>
+            <h2 class="center">How It <span class="gradient-text">Works</span></h2>
+            <p class="section-sub center">Four easy steps to get your visa done.</p>
+            <div class="how-grid">
+                <div class="how-step">
+                    <div class="how-num">01</div>
+                    <div class="how-icon"><i class="fa-solid fa-file-lines"></i></div>
+                    <h3>Resume & Assessment</h3>
+                    <p>Share your details. We assess your profile and identify the right visa category for you.</p>
+                </div>
+                <div class="how-connector"></div>
+                <div class="how-step">
+                    <div class="how-num">02</div>
+                    <div class="how-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h3>Consultation</h3>
+                    <p>Our experts shortlist requirements and schedule a consultation to finalize your documentation.
+                    </p>
+                </div>
+                <div class="how-connector"></div>
+                <div class="how-step">
+                    <div class="how-num">03</div>
+                    <div class="how-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <h3>Visa Processing</h3>
+                    <p>We handle document preparation, application filing, and embassy submission on your behalf.</p>
+                </div>
+                <div class="how-connector"></div>
+                <div class="how-step">
+                    <div class="how-num">04</div>
+                    <div class="how-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                    <h3>Travel Ready</h3>
+                    <p>Receive your visa and pre/post landing support to ensure a smooth arrival and settlement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section" id="statsSection">
+        <div class="container stats-grid">
+            <div class="stat-item"><span class="stat-num"><span class="count" data-target="2000">0</span>+</span>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item"><span class="stat-num"><span class="count" data-target="70">0</span>+</span>
+                <p>Countries Covered</p>
+            </div>
+            <div class="stat-item"><span class="stat-num"><span class="count" data-target="98">0</span>%</span>
+                <p>Approval Rate</p>
+            </div>
+            <div class="stat-item"><span class="stat-num">4.9 <i class="fa-solid fa-star"
+                        style="font-size:2rem;color:#fbbf24;"></i></span>
+                <p>Customer Rating</p>
+            </div>
+            <div class="stat-item"><span class="stat-num"><span class="count" data-target="3">0</span>â€“7</span>
+                <p>Days Processing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonialsSection">
+        <div class="container">
+            <div class="section-tag center">Real Reviews</div>
+            <h2 class="center">What Our <span class="gradient-text">Clients Say</span></h2>
+            <p class="section-sub center">Trusted by hundreds of happy clients across India.</p>
+        </div>
+
+        <!-- Infinite Scrolling Marquee Row 1 -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track" id="marqueeTrack1">
+                <!-- Card 1 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"Very helpful and they have put in good effort to get the visa in just 4 days. I recommend Explore Overseas. Thankyou."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)">M</div>
+                        <div><h4>Manoj</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="t-card featured-card">
+                    <div class="t-quote">"</div>
+                    <p>"Very happy with their service in getting my visa. I highly recommend!"</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">B</div>
+                        <div><h4>Babji</h4><span>Business</span></div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"The staff is so good, cooperative and available for each and every thing you wanna know. Coming to the price it is the best and affordable for everyone compared to the other agencies. It was the best decision to choose Explore Overseas to fulfill my dreams."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a)">S</div>
+                        <div><h4>Shailaja</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"Thanks Explore Overseas for prompt service. Do give them a try if you are looking for any visa related thing."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">J</div>
+                        <div><h4>Jayesh</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="t-card featured-card">
+                    <div class="t-quote">"</div>
+                    <p>"Their professionalism, efficiency, and clear communication truly exceeded my expectations. I'm extremely grateful for their support and would highly recommend them to anyone looking for fast and reliable visa service."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#a855f7)">P</div>
+                        <div><h4>Parthiban</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"These guys are extremely professional, transparent, and portray clear communication. Their service charges are also extremely market competitive."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">A</div>
+                        <div><h4>Adithya</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"I highly recommend Explore Overseas to my friends and family who are looking for a great migration agent. Keep up the good work and keep helping others to make their dreams be fulfilled."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#22c55e,#0ea5e9)">A</div>
+                        <div><h4>Akhil</h4><span>Business</span></div>
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="t-card featured-card">
+                    <div class="t-quote">"</div>
+                    <p>"The team guided us patiently and made sure everything was in place. Thanks to their timely help, my parents' visa was approved without any issues. I highly recommend Explore Overseas to anyone looking for reliable and quick assistance with abroad visa processes."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">D</div>
+                        <div><h4>Devaki</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"Smooth process. Thank you Explore Overseas. Highly recommended!"</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)">SC</div>
+                        <div><h4>Sai Chari</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <!-- Duplicates for seamless loop -->
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"Very helpful and they have put in good effort to get the visa in just 4 days. I recommend Explore Overseas. Thankyou."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)">M</div>
+                        <div><h4>Manoj</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+                <div class="t-card featured-card">
+                    <div class="t-quote">"</div>
+                    <p>"Very happy with their service in getting my visa. I highly recommend!"</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">B</div>
+                        <div><h4>Babji</h4><span>Business</span></div>
+                    </div>
+                </div>
+                <div class="t-card">
+                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <p>"Their professionalism, efficiency, and clear communication truly exceeded my expectations. I'm extremely grateful for their support."</p>
+                    <div class="t-author">
+                        <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#a855f7)">P</div>
+                        <div><h4>Parthiban</h4><span>Software Engineer</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contactSection">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <div class="section-tag">Get In Touch</div>
+                <h2>Start Your Visa<br><span class="gradient-text">Journey Today</span></h2>
+                <p>Fill the form and our experts will reach out to you within 24 hours with a personalised plan.</p>
+                <div class="ci-item"><i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 95158 13111</p>
+                    </div>
+                </div>
+                <div class="ci-item"><i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>support@eovisas.com</p>
+                    </div>
+                </div>
+                <div class="ci-item"><i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Office â€“ Hyderabad</h4>
+                        <p>2nd Floor, No. 16, Saroja Complex, Kukatpally Housing Board Rd, Hyderabad, Telangana 500072
+                        </p>
+                    </div>
+                </div>
+                <div class="ci-item"><i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Also Present In</h4>
+                        <p>Bangalore &amp; Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrap">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group"><label>Full Name</label><input type="text" id="fullName"
+                                placeholder="John Doe" required></div>
+                        <div class="form-group"><label>Phone Number</label><input type="tel" id="phone"
+                                placeholder="+91 95158 13111" required></div>
+                    </div>
+                    <div class="form-group"><label>Email Address</label><input type="email" id="email"
+                            placeholder="support@eovisas.com" required></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Visa Type</label>
+                            <select id="visaType" required>
+                                <option value="" disabled selected>Select Visa Type</option>
+                                <option>Tourist Visa</option>
+                                <option>Business Visa</option>
+                                <option>Student Visa</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Destination Country</label>
+                            <select id="destination">
+                                <option value="" disabled selected>Select Country</option>
+                                <option>UAE (Dubai)</option>
+                                <option>USA</option>
+                                <option>UK</option>
+                                <option>Canada</option>
+                                <option>Australia</option>
+                                <option>Schengen / Europe</option>
+                                <option>Afghanistan</option>
+                                <option>Albania</option>
+                                <option>Algeria</option>
+                                <option>Andorra</option>
+                                <option>Angola</option>
+                                <option>Antigua and Barbuda</option>
+                                <option>Argentina</option>
+                                <option>Armenia</option>
+                                <option>Austria</option>
+                                <option>Azerbaijan</option>
+                                <option>Bahamas</option>
+                                <option>Bahrain</option>
+                                <option>Bangladesh</option>
+                                <option>Barbados</option>
+                                <option>Belarus</option>
+                                <option>Belgium</option>
+                                <option>Belize</option>
+                                <option>Benin</option>
+                                <option>Bhutan</option>
+                                <option>Bolivia</option>
+                                <option>Bosnia and Herzegovina</option>
+                                <option>Botswana</option>
+                                <option>Brazil</option>
+                                <option>Brunei</option>
+                                <option>Bulgaria</option>
+                                <option>Burkina Faso</option>
+                                <option>Burundi</option>
+                                <option>Cabo Verde</option>
+                                <option>Cambodia</option>
+                                <option>Cameroon</option>
+                                <option>Central African Republic</option>
+                                <option>Chad</option>
+                                <option>Chile</option>
+                                <option>China</option>
+                                <option>Colombia</option>
+                                <option>Comoros</option>
+                                <option>Congo (Brazzaville)</option>
+                                <option>Congo (Kinshasa)</option>
+                                <option>Costa Rica</option>
+                                <option>Croatia</option>
+                                <option>Cuba</option>
+                                <option>Cyprus</option>
+                                <option>Czech Republic</option>
+                                <option>Denmark</option>
+                                <option>Djibouti</option>
+                                <option>Dominica</option>
+                                <option>Dominican Republic</option>
+                                <option>Ecuador</option>
+                                <option>Egypt</option>
+                                <option>El Salvador</option>
+                                <option>Equatorial Guinea</option>
+                                <option>Eritrea</option>
+                                <option>Estonia</option>
+                                <option>Eswatini</option>
+                                <option>Ethiopia</option>
+                                <option>Fiji</option>
+                                <option>Finland</option>
+                                <option>France</option>
+                                <option>Gabon</option>
+                                <option>Gambia</option>
+                                <option>Georgia</option>
+                                <option>Germany</option>
+                                <option>Ghana</option>
+                                <option>Greece</option>
+                                <option>Grenada</option>
+                                <option>Guatemala</option>
+                                <option>Guinea</option>
+                                <option>Guinea-Bissau</option>
+                                <option>Guyana</option>
+                                <option>Haiti</option>
+                                <option>Honduras</option>
+                                <option>Hungary</option>
+                                <option>Iceland</option>
+                                <option>India</option>
+                                <option>Indonesia</option>
+                                <option>Iran</option>
+                                <option>Iraq</option>
+                                <option>Ireland</option>
+                                <option>Israel</option>
+                                <option>Italy</option>
+                                <option>Jamaica</option>
+                                <option>Japan</option>
+                                <option>Jordan</option>
+                                <option>Kazakhstan</option>
+                                <option>Kenya</option>
+                                <option>Kiribati</option>
+                                <option>Kuwait</option>
+                                <option>Kyrgyzstan</option>
+                                <option>Laos</option>
+                                <option>Latvia</option>
+                                <option>Lebanon</option>
+                                <option>Lesotho</option>
+                                <option>Liberia</option>
+                                <option>Libya</option>
+                                <option>Liechtenstein</option>
+                                <option>Lithuania</option>
+                                <option>Luxembourg</option>
+                                <option>Madagascar</option>
+                                <option>Malawi</option>
+                                <option>Malaysia</option>
+                                <option>Maldives</option>
+                                <option>Mali</option>
+                                <option>Malta</option>
+                                <option>Marshall Islands</option>
+                                <option>Mauritania</option>
+                                <option>Mauritius</option>
+                                <option>Mexico</option>
+                                <option>Micronesia</option>
+                                <option>Moldova</option>
+                                <option>Monaco</option>
+                                <option>Mongolia</option>
+                                <option>Montenegro</option>
+                                <option>Morocco</option>
+                                <option>Mozambique</option>
+                                <option>Myanmar</option>
+                                <option>Namibia</option>
+                                <option>Nauru</option>
+                                <option>Nepal</option>
+                                <option>Netherlands</option>
+                                <option>New Zealand</option>
+                                <option>Nicaragua</option>
+                                <option>Niger</option>
+                                <option>Nigeria</option>
+                                <option>North Korea</option>
+                                <option>North Macedonia</option>
+                                <option>Norway</option>
+                                <option>Oman</option>
+                                <option>Pakistan</option>
+                                <option>Palau</option>
+                                <option>Palestine</option>
+                                <option>Panama</option>
+                                <option>Papua New Guinea</option>
+                                <option>Paraguay</option>
+                                <option>Peru</option>
+                                <option>Philippines</option>
+                                <option>Poland</option>
+                                <option>Portugal</option>
+                                <option>Qatar</option>
+                                <option>Romania</option>
+                                <option>Russia</option>
+                                <option>Rwanda</option>
+                                <option>Saint Kitts and Nevis</option>
+                                <option>Saint Lucia</option>
+                                <option>Saint Vincent and the Grenadines</option>
+                                <option>Samoa</option>
+                                <option>San Marino</option>
+                                <option>Sao Tome and Principe</option>
+                                <option>Saudi Arabia</option>
+                                <option>Senegal</option>
+                                <option>Serbia</option>
+                                <option>Seychelles</option>
+                                <option>Sierra Leone</option>
+                                <option>Singapore</option>
+                                <option>Slovakia</option>
+                                <option>Slovenia</option>
+                                <option>Solomon Islands</option>
+                                <option>Somalia</option>
+                                <option>South Africa</option>
+                                <option>South Korea</option>
+                                <option>South Sudan</option>
+                                <option>Spain</option>
+                                <option>Sri Lanka</option>
+                                <option>Sudan</option>
+                                <option>Suriname</option>
+                                <option>Sweden</option>
+                                <option>Switzerland</option>
+                                <option>Syria</option>
+                                <option>Taiwan</option>
+                                <option>Tajikistan</option>
+                                <option>Tanzania</option>
+                                <option>Thailand</option>
+                                <option>Timor-Leste</option>
+                                <option>Togo</option>
+                                <option>Tonga</option>
+                                <option>Trinidad and Tobago</option>
+                                <option>Tunisia</option>
+                                <option>Turkey</option>
+                                <option>Turkmenistan</option>
+                                <option>Tuvalu</option>
+                                <option>Uganda</option>
+                                <option>Ukraine</option>
+                                <option>Uruguay</option>
+                                <option>Uzbekistan</option>
+                                <option>Vanuatu</option>
+                                <option>Vatican City</option>
+                                <option>Venezuela</option>
+                                <option>Vietnam</option>
+                                <option>Yemen</option>
+                                <option>Zambia</option>
+                                <option>Zimbabwe</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Upload Resume (optional)</label><input type="file" id="resume"
+                            accept=".pdf,.doc,.docx" class="file-input"></div>
+                    <div class="form-group"><label>Message</label><textarea id="message" rows="3"
+                            placeholder="Tell us about your travel plans..."></textarea></div>
+                    <button type="submit" class="btn-submit" id="submitBtn"><i class="fa-solid fa-paper-plane"></i>
+                        Submit Application</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="assets/images/logo.png" alt="Explore Overseas" style="max-height:55px;margin-bottom:15px;">
+                <p>A trusted visa assistance platform helping travelers reach their dreams â€“ fast, secure, and
+                    stress-free.</p>
+                <p style="margin-top:10px;font-size:0.8rem;color:#64748b;">Licence No:
+                    Mumbai/properietorship/5926639/2024</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4><a href="#heroSection">Home</a><a href="#aboutSection">About Us</a><a
+                    href="#servicesSection">Services</a><a href="#packagesSection">Packages</a><a
+                    href="#destinationsSection">Destinations</a><a href="#contactSection">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Visa Types</h4><a href="#servicesSection">Tourist Visa</a><a href="#servicesSection">Business
+                    Visa</a><a href="#servicesSection">Student Visa</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fa-solid fa-phone"></i> +91 95158 13111</p>
+                <p><i class="fa-solid fa-envelope"></i> support@eovisas.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Hyderabad | Bangalore | Mumbai</p>
+                <p style="margin-top:5px;font-size:0.8rem;color:#64748b;font-style:italic;">Disclaimer: We are an
+                    independent visa assistance service and are not affiliated with any government authority.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Explore Overseas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/919515813111" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script defer src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+// Firebase — loaded via CDN script tags in HTML (optional)
+// If not configured, form data is logged to the console.
+
+let db = null;
+try {
+    if (typeof firebase !== 'undefined') {
+        firebase.initializeApp(window._firebaseConfig || {});
+        db = firebase.firestore();
+    }
+} catch (e) {
+    console.info('Firebase not configured — form data will be logged to console.');
+}
+
+// ─── NAVBAR MOBILE ─────────────────────────────────────────────────────────────
+window.toggleNav = function () {
+    document.getElementById('navLinks').classList.toggle('open');
+};
+
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+// ─── ALL COUNTRIES LIST ─────────────────────────────────────────────────────────
+const ALL_COUNTRIES = [
+    "UAE (Dubai)", "USA", "UK", "Canada", "Australia", "Schengen / Europe",
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
+    "Argentina", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+    "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+    "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon",
+    "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
+    "Congo (Brazzaville)", "Congo (Kinshasa)", "Costa Rica", "Croatia", "Cuba",
+    "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica",
+    "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
+    "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
+    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada",
+    "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras",
+    "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
+    "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
+    "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
+    "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+    "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+    "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco",
+    "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+    "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
+    "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan",
+    "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+    "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+    "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal",
+    "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia",
+    "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan",
+    "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo",
+    "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+    "Uganda", "Ukraine", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
+    "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "Other"
+];
+
+// ─── HERO SEARCH AUTOCOMPLETE ────────────────────────────────────────────────────
+const searchInput = document.getElementById('destSearch');
+const suggestionsBox = document.getElementById('searchSuggestions');
+
+function selectCountry(country) {
+    searchInput.value = country;
+    suggestionsBox.innerHTML = '';
+    suggestionsBox.classList.remove('open');
+
+    // Pre-select in contact form destination dropdown
+    const destSelect = document.getElementById('destination');
+    if (destSelect) {
+        for (let i = 0; i < destSelect.options.length; i++) {
+            if (destSelect.options[i].text === country) {
+                destSelect.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    // Scroll to contact form
+    const contactSec = document.getElementById('contactSection');
+    if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+}
+
+window.fillSearch = function (dest) {
+    selectCountry(dest);
+};
+
+searchInput.addEventListener('input', function () {
+    const val = this.value.trim().toLowerCase();
+    suggestionsBox.innerHTML = '';
+    if (!val) { suggestionsBox.classList.remove('open'); return; }
+
+    const matches = ALL_COUNTRIES.filter(c => c.toLowerCase().includes(val));
+    if (matches.length === 0) { suggestionsBox.classList.remove('open'); return; }
+
+    matches.slice(0, 10).forEach(country => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item';
+        item.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--accent);font-size:0.8rem;"></i> ${country}`;
+        item.addEventListener('click', () => selectCountry(country));
+        suggestionsBox.appendChild(item);
+    });
+    suggestionsBox.classList.add('open');
+});
+
+// Close on outside click
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.search-bar-wrap')) {
+        suggestionsBox.classList.remove('open');
+    }
+});
+
+// Enter key
+searchInput.addEventListener('keydown', function (e) {
+    const items = suggestionsBox.querySelectorAll('.suggestion-item');
+    let active = suggestionsBox.querySelector('.suggestion-item.active');
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (!active) items[0]?.classList.add('active');
+        else { active.classList.remove('active'); (active.nextElementSibling || items[0]).classList.add('active'); }
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!active) items[items.length - 1]?.classList.add('active');
+        else { active.classList.remove('active'); (active.previousElementSibling || items[items.length - 1]).classList.add('active'); }
+    } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const chosen = suggestionsBox.querySelector('.suggestion-item.active') || suggestionsBox.querySelector('.suggestion-item');
+        if (chosen) { selectCountry(chosen.textContent.trim()); }
+        else window.searchDest();
+    } else if (e.key === 'Escape') {
+        suggestionsBox.classList.remove('open');
+    }
+});
+
+window.searchDest = function () {
+    const val = searchInput.value.trim();
+    if (!val) return;
+    const match = ALL_COUNTRIES.find(c => c.toLowerCase() === val.toLowerCase());
+    selectCountry(match || val);
+};
+
+// ─── ANIMATED COUNTERS ──────────────────────────────────────────────────────────
+function animateCounter(el, target, duration = 2000) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+            el.textContent = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            el.textContent = Math.floor(start).toLocaleString();
+        }
+    }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+            entry.target.dataset.animated = 'true';
+            const target = parseInt(entry.target.dataset.target, 10);
+            animateCounter(entry.target, target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.count').forEach(el => counterObserver.observe(el));
+
+// ─── NAVBAR SCROLL EFFECT ───────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('mainNav');
+    if (window.scrollY > 60) {
+        nav.style.background = 'rgba(8,13,20,0.98)';
+    } else {
+        nav.style.background = 'rgba(8,13,20,0.92)';
+    }
+});
+
+// ─── CONTACT FORM ───────────────────────────────────────────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    const formData = {
+        fullName: document.getElementById('fullName').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        visaType: document.getElementById('visaType').value,
+        destination: document.getElementById('destination').value,
+        message: document.getElementById('message').value,
+        timestamp: new Date().toISOString()
+    };
+
+    try {
+        if (db) {
+            await db.collection("applications").add(formData);
+        } else {
+            console.log("Form Data:", formData);
+            await new Promise(r => setTimeout(r, 800)); // simulate delay
+        }
+        status.textContent = '✅ Application submitted! Our team will contact you within 24 hours.';
+        status.classList.add('status-success');
+        document.getElementById('contactForm').reset();
+    } catch (err) {
+        console.error(err);
+        status.textContent = '❌ Something went wrong. Please try again or call us directly.';
+        status.classList.add('status-error');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Application';
+    }
+});
+
+// ─── SCROLL REVEAL ANIMATION ────────────────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .about-card, .package-card, .dest-card, .how-step, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    revealObserver.observe(el);
+});
