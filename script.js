@@ -231,7 +231,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.service-card, .about-card, .package-card, .dest-card, .how-step, .stat-item').forEach(el => {
+document.querySelectorAll('.service-card, .about-card, .dest-card, .how-step, .stat-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
