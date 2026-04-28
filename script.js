@@ -174,9 +174,11 @@ document.querySelectorAll('.count').forEach(el => counterObserver.observe(el));
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('mainNav');
     if (window.scrollY > 60) {
-        nav.style.background = 'rgba(8,13,20,0.98)';
+        nav.style.background = 'rgba(255,255,255,0.98)';
+        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
     } else {
-        nav.style.background = 'rgba(8,13,20,0.92)';
+        nav.style.background = 'rgba(255,255,255,0.95)';
+        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.03)';
     }
 });
 
@@ -237,3 +239,110 @@ document.querySelectorAll('.service-card, .about-card, .dest-card, .how-step, .s
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     revealObserver.observe(el);
 });
+
+// ─── VISA FINDER ─────────────────────────────────────────────────────────────────
+const VISA_DATA = {
+    evisa: [
+        'Vietnam', 'Indonesia', 'UAE', 'Thailand', 'Egypt', 'Malaysia',
+        'South Africa', 'Hong Kong', 'Australia', 'UK', 'Uzbekistan', 'Oman',
+        'Azerbaijan', 'Russia', 'Georgia', 'Taiwan', 'Jordan', 'Kenya', 'Turkey',
+        'New Zealand', 'Cambodia', 'Qatar', 'Philippines', 'Laos', 'Morocco',
+        'Tanzania', 'Ethiopia', 'Mongolia', 'Zambia', 'Armenia', 'Kyrgyzstan',
+        'Madagascar', 'Papua New Guinea', 'Bhutan', 'Argentina', 'Kuwait',
+        'Israel', 'Antigua & Barbuda', 'Cuba', 'Seychelles', 'Tajikistan',
+        'Benin', 'Lebanon', 'Cameroon', 'Malawi', 'Myanmar', 'Uganda', 'Gabon',
+        'Togo', 'South Sudan', 'Guinea', 'Cape Verde', 'Moldova',
+        'Equatorial Guinea', 'Chile', 'Nigeria', 'Rwanda', 'Sierra Leone',
+        'Somalia', 'Namibia', 'Cote D Ivoire', 'Djibouti', 'Bahamas', 'Eritrea',
+        'Sao Tome & Principe'
+    ],
+    sticker: [
+        'USA', 'Canada', 'Austria', 'South Korea', 'China', 'Japan', 'France',
+        'Switzerland', 'Spain', 'Netherlands', 'Germany', 'Greece', 'Bulgaria',
+        'Czech Republic', 'Portugal', 'Poland', 'Brazil', 'Belgium', 'Ireland',
+        'Finland', 'Iceland', 'Croatia', 'Bolivia', 'Honduras', 'Venezuela',
+        'Dominican Republic', 'Nicaragua', 'Mali', 'Italy', 'Hungary', 'Sweden',
+        'Malta', 'Estonia', 'Slovakia', 'Cyprus', 'Mexico', 'Algeria',
+        'Lithuania', 'Uruguay', 'Ghana', 'Tunisia', 'Guatemala', 'Eritrea'
+    ],
+    arrival: [
+        'Belarus', 'Saint Lucia', 'Palau', 'Samoa', 'Burundi', 'Mauritania',
+        'Marshall Islands', 'Comoros', 'Solomon Islands', 'Guinea-Bissau'
+    ],
+    free: [
+        'Sri Lanka', 'Nepal', 'Maldives', 'Mauritius', 'Jamaica', 'Barbados',
+        'Fiji', 'Micronesia', 'El Salvador', 'Trinidad & Tobago', 'Senegal',
+        'Saint Kitts & Nevis', 'Haiti', 'Gambia'
+    ]
+};
+
+const VISA_ICONS = {
+    evisa: 'fa-laptop', sticker: 'fa-stamp', arrival: 'fa-plane-arrival', free: 'fa-check-circle'
+};
+
+let activeVisaType = 'evisa';
+const COUNTRY_ISO = {
+    'Vietnam': 'vn', 'Indonesia': 'id', 'UAE': 'ae', 'Thailand': 'th', 'Egypt': 'eg', 'Malaysia': 'my',
+    'South Africa': 'za', 'Hong Kong': 'hk', 'Australia': 'au', 'UK': 'gb', 'Uzbekistan': 'uz', 'Oman': 'om',
+    'Azerbaijan': 'az', 'Russia': 'ru', 'Georgia': 'ge', 'Taiwan': 'tw', 'Jordan': 'jo', 'Kenya': 'ke', 'Turkey': 'tr',
+    'New Zealand': 'nz', 'Cambodia': 'kh', 'Qatar': 'qa', 'Philippines': 'ph', 'Laos': 'la', 'Morocco': 'ma',
+    'Tanzania': 'tz', 'Ethiopia': 'et', 'Mongolia': 'mn', 'Zambia': 'zm', 'Armenia': 'am', 'Kyrgyzstan': 'kg',
+    'Madagascar': 'mg', 'Papua New Guinea': 'pg', 'Bhutan': 'bt', 'Argentina': 'ar', 'Kuwait': 'kw',
+    'Israel': 'il', 'Antigua & Barbuda': 'ag', 'Cuba': 'cu', 'Seychelles': 'sc', 'Tajikistan': 'tj',
+    'Benin': 'bj', 'Lebanon': 'lb', 'Cameroon': 'cm', 'Malawi': 'mw', 'Myanmar': 'mm', 'Uganda': 'ug', 'Gabon': 'ga',
+    'Togo': 'tg', 'South Sudan': 'ss', 'Guinea': 'gn', 'Cape Verde': 'cv', 'Moldova': 'md',
+    'Equatorial Guinea': 'gq', 'Chile': 'cl', 'Nigeria': 'ng', 'Rwanda': 'rw', 'Sierra Leone': 'sl',
+    'Somalia': 'so', 'Namibia': 'na', 'Cote D Ivoire': 'ci', 'Djibouti': 'dj', 'Bahamas': 'bs', 'Eritrea': 'er',
+    'Sao Tome & Principe': 'st', 'USA': 'us', 'Canada': 'ca', 'Austria': 'at', 'South Korea': 'kr', 'China': 'cn',
+    'Japan': 'jp', 'France': 'fr', 'Switzerland': 'ch', 'Spain': 'es', 'Netherlands': 'nl', 'Germany': 'de',
+    'Greece': 'gr', 'Bulgaria': 'bg', 'Czech Republic': 'cz', 'Portugal': 'pt', 'Poland': 'pl', 'Brazil': 'br',
+    'Belgium': 'be', 'Ireland': 'ie', 'Finland': 'fi', 'Iceland': 'is', 'Croatia': 'hr', 'Bolivia': 'bo',
+    'Honduras': 'hn', 'Venezuela': 've', 'Dominican Republic': 'do', 'Nicaragua': 'ni', 'Mali': 'ml', 'Italy': 'it',
+    'Hungary': 'hu', 'Sweden': 'se', 'Malta': 'mt', 'Estonia': 'ee', 'Slovakia': 'sk', 'Cyprus': 'cy', 'Mexico': 'mx',
+    'Algeria': 'dz', 'Lithuania': 'lt', 'Uruguay': 'uy', 'Ghana': 'gh', 'Tunisia': 'tn', 'Guatemala': 'gt',
+    'Belarus': 'by', 'Saint Lucia': 'lc', 'Palau': 'pw', 'Samoa': 'ws', 'Burundi': 'bi', 'Mauritania': 'mr',
+    'Marshall Islands': 'mh', 'Comoros': 'km', 'Solomon Islands': 'sb', 'Guinea-Bissau': 'gw',
+    'Sri Lanka': 'lk', 'Nepal': 'np', 'Maldives': 'mv', 'Mauritius': 'mu', 'Jamaica': 'jm', 'Barbados': 'bb',
+    'Fiji': 'fj', 'Micronesia': 'fm', 'El Salvador': 'sv', 'Trinidad & Tobago': 'tt', 'Senegal': 'sn',
+    'Saint Kitts & Nevis': 'kn', 'Haiti': 'ht', 'Gambia': 'gm'
+};
+
+function renderVisaGrid(query = '') {
+    const grid = document.getElementById('visaCountryGrid');
+    grid.innerHTML = '';
+    const list = VISA_DATA[activeVisaType];
+    const filtered = query
+        ? list.filter(c => c.toLowerCase().includes(query.toLowerCase()))
+        : list;
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="vf-no-result">No countries found matching your search.</div>';
+        return;
+    }
+    filtered.forEach((country, i) => {
+        const chip = document.createElement('span');
+        chip.className = 'vf-chip';
+        chip.style.animationDelay = `${i * 0.03}s`;
+        const iso = COUNTRY_ISO[country];
+        const flagImg = iso 
+            ? `<img src="https://flagcdn.com/w40/${iso}.png" srcset="https://flagcdn.com/w80/${iso}.png 2x" width="20" alt="${country}" style="border-radius:2px;">`
+            : `<i class="fa-solid fa-globe" style="font-size:0.75rem;color:var(--accent);"></i>`;
+        chip.innerHTML = `${flagImg} ${country}`;
+        grid.appendChild(chip);
+    });
+}
+
+window.switchVisaTab = function (type, btn) {
+    activeVisaType = type;
+    document.querySelectorAll('.vf-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('visaCountrySearch').value = '';
+    renderVisaGrid();
+};
+
+window.filterVisaCountries = function () {
+    const q = document.getElementById('visaCountrySearch').value;
+    renderVisaGrid(q);
+};
+
+// Init
+renderVisaGrid();

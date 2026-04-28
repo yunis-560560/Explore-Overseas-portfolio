@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="hero-stats">
-            <div class="hero-stat"><span class="count" data-target="70">0</span>+<p>Countries</p>
+            <div class="hero-stat"><span class="count" data-target="80">0</span>+<p>Countries</p>
             </div>
             <div class="hero-stat"><span class="count" data-target="98">0</span>%<p>Success Rate</p>
             </div>
@@ -163,6 +163,40 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- VISA FINDER -->
+    <section class="visa-finder-section" id="visaFinderSection">
+        <div class="container">
+            <div class="section-tag center">Country Visa Guide</div>
+            <h2 class="center">Find Visa Type by <span class="gradient-text">Country</span></h2>
+            <p class="section-sub center">Select a visa category and search to instantly see which countries qualify.</p>
+
+            <!-- Tab Buttons -->
+            <div class="vf-tabs">
+                <button class="vf-tab active" data-type="evisa" onclick="switchVisaTab('evisa', this)">
+                    <i class="fa-solid fa-laptop"></i> E-Visa
+                </button>
+                <button class="vf-tab" data-type="sticker" onclick="switchVisaTab('sticker', this)">
+                    <i class="fa-solid fa-stamp"></i> Sticker Visa
+                </button>
+                <button class="vf-tab" data-type="arrival" onclick="switchVisaTab('arrival', this)">
+                    <i class="fa-solid fa-plane-arrival"></i> Visa on Arrival
+                </button>
+                <button class="vf-tab" data-type="free" onclick="switchVisaTab('free', this)">
+                    <i class="fa-solid fa-check-circle"></i> Visa Free
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="vf-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="visaCountrySearch" placeholder="Search country..." oninput="filterVisaCountries()" autocomplete="off">
+            </div>
+
+            <!-- Country Grid -->
+            <div class="vf-grid" id="visaCountryGrid"></div>
         </div>
     </section>
 
@@ -262,18 +296,17 @@
             <div class="stat-item"><span class="stat-num"><span class="count" data-target="2000">0</span>+</span>
                 <p>Happy Clients</p>
             </div>
-            <div class="stat-item"><span class="stat-num"><span class="count" data-target="70">0</span>+</span>
+            <div class="stat-item"><span class="stat-num"><span class="count" data-target="80">0</span>+</span>
                 <p>Countries Covered</p>
             </div>
             <div class="stat-item"><span class="stat-num"><span class="count" data-target="98">0</span>%</span>
                 <p>Approval Rate</p>
             </div>
-            <div class="stat-item"><span class="stat-num">4.9 <i class="fa-solid fa-star"
-                        style="font-size:2rem;color:#fbbf24;"></i></span>
+            <div class="stat-item"><span class="stat-num">4.9 <i class="fa-solid fa-star"></i></span>
                 <p>Customer Rating</p>
             </div>
-            <div class="stat-item"><span class="stat-num"><span class="count" data-target="3">0</span>â€“7</span>
-                <p>Days Processing</p>
+            <div class="stat-item"><span class="stat-num">Varies</span>
+                <p>Dependent on selected country</p>
             </div>
         </div>
     </section>
@@ -503,13 +536,17 @@
                         <p>support@eovisas.com</p>
                     </div>
                 </div>
-                <div class="ci-item"><i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <h4>Office â€“ Hyderabad</h4>
-                        <p>2nd Floor, No. 16, Saroja Complex, Kukatpally Housing Board Rd, Hyderabad, Telangana 500072
-                        </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=2nd+Floor,+No.+16,+Saroja+Complex,+Kukatpally+Housing+Board+Rd,+Hyderabad,+Telangana+500072"
+                    target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="ci-item"><i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Office - Hyderabad</h4>
+                            <p>2nd Floor, No. 16, Saroja Complex, Kukatpally Housing Board Rd, Hyderabad, Telangana
+                                500072
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <div class="ci-item"><i class="fa-solid fa-location-dot"></i>
                     <div>
                         <h4>Also Present In</h4>
@@ -753,6 +790,18 @@
         </div>
     </section>
 
+    <!-- UNIVERSITIES PANEL -->
+    <section class="univ-section" id="univSection" style="display:none;">
+        <div class="container">
+            <div class="univ-header">
+                <div class="section-tag center">Study Abroad Guide</div>
+                <h2 class="center">Top Universities & Courses in <span class="gradient-text" id="univCountryTitle">–</span></h2>
+                <p class="section-sub center">Hand-picked top institutions and most popular study programmes for Indian students.</p>
+            </div>
+            <div class="univ-grid" id="univGrid"></div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container footer-grid">
@@ -765,8 +814,8 @@
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4><a href="#heroSection">Home</a><a href="#aboutSection">About Us</a><a
-                    href="#servicesSection">Services</a><a
-                    href="#destinationsSection">Destinations</a><a href="#contactSection">Contact</a>
+                    href="#servicesSection">Services</a><a href="#destinationsSection">Destinations</a><a
+                    href="#contactSection">Contact</a>
             </div>
             <div class="footer-links">
                 <h4>Visa Types</h4><a href="#servicesSection">Tourist Visa</a><a href="#servicesSection">Business
@@ -782,7 +831,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Explore Overseas. All Rights Reserved. | Main Website: <a href="https://eovisas.com/" target="_blank" style="color: var(--accent2); text-decoration: none;">eovisas.com</a></p>
+            <p>&copy; 2025 Explore Overseas. All Rights Reserved. | Main Website: <a href="https://eovisas.com/"
+                    target="_blank" style="color: var(--accent2); text-decoration: none;">eovisas.com</a></p>
         </div>
     </footer>
 
@@ -791,6 +841,7 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <script defer src="universities.js"></script>
     <script defer src="script.js"></script>
 </body>
 
