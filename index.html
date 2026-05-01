@@ -7,12 +7,12 @@
     <title>Explore Overseas - Where Dreams Take Flight</title>
     <meta name="description"
         content="Explore Overseas is a trusted visa assistance platform. Tourist, Business, Student & Work visas for 100+ countries. Fast, easy & secure.">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,14 +22,21 @@
         <div class="topbar-inner">
             <span><i class="fa-solid fa-phone"></i> +91 95158 13111</span>
             <span><i class="fa-solid fa-envelope"></i> support@eovisas.com</span>
-            <span><i class="fa-solid fa-location-dot"></i> Bangalore | Mumbai | Hyderabad</span>
+            <span><i class="fa-solid fa-location-dot"></i>
+                <a href="https://www.google.com/maps/search/?api=1&query=EXPLORE+OVERSEAS+%7C+VISA+CONSULTANCY+in+HSR+Layout,+1st+floor,+54/1,24th+main,+Parangipalya+Main+Rd,+beside+my+chicken+centre+and+more,+2nd+Sector,+oppsite,+HSR+Layout,+Bengaluru,+Karnataka+560102"
+                    target="_blank">Bengaluru</a> |
+                <a href="https://www.google.com/maps/search/?api=1&query=Explore+Overseas+office+no+1+Ground+floor+Yashoda+building+179/a+Lady+Jamshedji+Rd+opposite+Airtel+Gallery+behind+blue+dart+courier+Dadar+West+Dadar+Mumbai+Maharashtra+400028"
+                    target="_blank">Mumbai</a> |
+                <a href="https://www.google.com/maps/search/?api=1&query=EXPLORE+OVERSEAS+%7C+VISA+CONSULTANCY+in+KUKATPALLY,+2nd+floor,+No.+16,+Saroja+Complex,+Kukatpally+Housing+Board+Rd,+near+Metro+Station,+Bhagya+Nagar+Colony,+Kukatpally,+Hyderabad,+Telangana+500072"
+                    target="_blank">Hyderabad</a>
+            </span>
         </div>
     </div>
 
     <!-- NAVBAR -->
     <nav class="navbar" id="mainNav">
         <div class="logo">
-            <img src="assets/images/logo.png" alt="Explore Overseas" style="max-height:55px;">
+            <img src="assets/images/EO_Logo%20WebSite%20PNG.png" alt="Explore Overseas" style="max-height:55px;">
         </div>
         <div class="nav-links" id="navLinks">
             <a href="#heroSection">Home</a>
@@ -60,12 +67,12 @@
                 <div id="searchSuggestions" class="search-suggestions"></div>
             </div>
             <div class="hero-tags">
-                <span onclick="fillSearch('UAE')">UAE</span>
-                <span onclick="fillSearch('USA')">USA</span>
-                <span onclick="fillSearch('UK')">UK</span>
+                <span onclick="fillSearch('Dubai (UAE)')">Dubai (UAE)</span>
+                <span onclick="fillSearch('United States of America (USA)')">United States of America (USA)</span>
+                <span onclick="fillSearch('United Kingdom (UK)')">United Kingdom (UK)</span>
                 <span onclick="fillSearch('Canada')">Canada</span>
                 <span onclick="fillSearch('Australia')">Australia</span>
-                <span onclick="fillSearch('Schengen')">Schengen</span>
+                <span onclick="fillSearch('Japan')">Japan</span>
             </div>
         </div>
         <div class="hero-stats">
@@ -171,7 +178,8 @@
         <div class="container">
             <div class="section-tag center">Country Visa Guide</div>
             <h2 class="center">Find Visa Type by <span class="gradient-text">Country</span></h2>
-            <p class="section-sub center">Select a visa category and search to instantly see which countries qualify.</p>
+            <p class="section-sub center">Select a visa category and search to instantly see which countries qualify.
+            </p>
 
             <!-- Tab Buttons -->
             <div class="vf-tabs">
@@ -192,11 +200,209 @@
             <!-- Search Bar -->
             <div class="vf-search-wrap">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="visaCountrySearch" placeholder="Search country..." oninput="filterVisaCountries()" autocomplete="off">
+                <input type="text" id="visaCountrySearch" placeholder="Search country..."
+                    oninput="filterVisaCountries()" autocomplete="off">
             </div>
 
             <!-- Country Grid -->
             <div class="vf-grid" id="visaCountryGrid"></div>
+        </div>
+    </section>
+
+    <!-- POPULAR VISA INSIGHTS -->
+    <section class="visa-insights-section">
+        <div class="container">
+            <div class="section-tag center">Expert Guidance</div>
+            <h2 class="center">Top Choice <span class="gradient-text">Destinations</span></h2>
+            <p class="section-sub center">A detailed breakdown of the most popular visa categories for our
+                top-performing countries.</p>
+
+            <div class="visa-insights-grid" id="insightsGrid">
+                <!-- UAE -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/ae.png" alt="UAE">
+                        <h3>Dubai (UAE)</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Fast-track processing for investors and professionals looking to
+                                expand in the Gulf.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Easy 30 or 60-day e-visa options with minimal documentation
+                                required.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Assistance with study permits for top-tier international
+                                universities in Dubai.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USA -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/us.png" alt="USA">
+                        <h3>United States of America (USA)</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa (B1)</div>
+                            <p class="insight-desc">Expert guidance on B1/B2 documentation and interview preparation for
+                                high success.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa (B2)</div>
+                            <p class="insight-desc">Strategic support for family visits and leisure travel with
+                                end-to-end assistance.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa (F1)
+                            </div>
+                            <p class="insight-desc">Comprehensive I-20 and F1 visa support for students heading to Ivy
+                                League & more.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UK -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/gb.png" alt="UK">
+                        <h3>United Kingdom (UK)</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Support for standard visitor visas for business meetings and trade
+                                events.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Standard and priority processing assistance for exploring British
+                                landmarks.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Tier 4 visa guidance and CAS letter documentation for UK degree
+                                seekers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CANADA -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/ca.png" alt="Canada">
+                        <h3>Canada</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Support for TRVs for business meetings, conferences, and site
+                                visits.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Assistance with visitor visas for family reunions and exploring the
+                                Great North.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Full study permit application support for DLIs and post-graduation
+                                pathways.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUSTRALIA -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/au.png" alt="Australia">
+                        <h3>Australia</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Guidance for subclass 600 business visitor streams for meetings and
+                                seminars.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Seamless online application support for subclass 600 tourist stream
+                                visas.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Documentation assistance for subclass 500 student visas for GTE
+                                compliance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCHENGEN -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/eu.png" alt="Schengen">
+                        <h3>Schengen (Europe)</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Multi-entry support for business professionals across 27 European
+                                nations.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Complete itinerary and documentation support for European vacation
+                                dreams.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Long-stay D-type visa assistance for students heading to top EU
+                                universities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOUTH AFRICA -->
+                <div class="insight-card">
+                    <div class="insight-country">
+                        <img src="https://flagcdn.com/w80/za.png" alt="South Africa">
+                        <h3>South Africa</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-suitcase"></i> Business Visa</div>
+                            <p class="insight-desc">Facilitation for short-term work and business meetings in South
+                                Africa.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-camera"></i> Tourist Visa</div>
+                            <p class="insight-desc">Simple e-visa or sticker visa assistance for exploring the African
+                                safari.</p>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label"><i class="fa-solid fa-graduation-cap"></i> Student Visa</div>
+                            <p class="insight-desc">Support for study permits for recognized South African educational
+                                institutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CAROUSEL CONTROLS -->
+            <div class="insights-controls">
+                <button class="insights-btn prev" onclick="scrollInsights(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="insights-progress-wrap">
+                    <div class="insights-progress-bar" id="insightsProgress"></div>
+                </div>
+                <button class="insights-btn next" onclick="scrollInsights(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
         </div>
     </section>
 
@@ -206,48 +412,49 @@
             <div class="section-tag center">Where We Go</div>
             <h2 class="center">Popular <span class="gradient-text">Destinations</span></h2>
             <p class="section-sub center">We assist with visa applications for 100+ countries worldwide.</p>
-            <div class="dest-grid">
-                <div class="dest-card"><img src="assets/images/dest_dubai.png" alt="UAE Dubai">
+            <div class="dest-grid" id="destGrid">
+                <div class="dest-card" onclick="selectCountry('Dubai (UAE)')"><img src="assets/images/dest_dubai.png" alt="UAE Dubai">
                     <div class="dest-overlay">
-                        <h3>UAE</h3>
+                        <h3>Dubai (UAE)</h3>
                         <p>Tourist &middot; Business &middot; Work</p><a href="#contactSection"
                             class="dest-btn">Apply</a>
                     </div>
                 </div>
-                <div class="dest-card"><img src="assets/images/dest_usa.png" alt="USA">
+                <div class="dest-card" onclick="selectCountry('United States of America (USA)')"><img src="assets/images/dest_usa.png" alt="USA">
                     <div class="dest-overlay">
-                        <h3>USA</h3>
+                        <h3>United States of America (USA)</h3>
                         <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection"
                             class="dest-btn">Apply</a>
                     </div>
                 </div>
-                <div class="dest-card"><img src="assets/images/dest_uk.png" alt="United Kingdom">
+                <div class="dest-card" onclick="selectCountry('United Kingdom (UK)')"><img src="assets/images/dest_uk.png" alt="United Kingdom">
                     <div class="dest-overlay">
-                        <h3>UK</h3>
+                        <h3>United Kingdom (UK)</h3>
                         <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection"
                             class="dest-btn">Apply</a>
                     </div>
                 </div>
-                <div class="dest-card"><img src="assets/images/dest_canada.png" alt="Canada">
+                <div class="dest-card" onclick="selectCountry('Canada')"><img src="assets/images/dest_canada.png" alt="Canada">
                     <div class="dest-overlay">
                         <h3>Canada</h3>
                         <p>Tourist &middot; Student &middot; PR</p><a href="#contactSection" class="dest-btn">Apply</a>
                     </div>
                 </div>
-                <div class="dest-card"><img src="assets/images/dest_australia.png" alt="Australia">
+                <div class="dest-card" onclick="selectCountry('Australia')"><img src="assets/images/dest_australia.png" alt="Australia">
                     <div class="dest-overlay">
                         <h3>Australia</h3>
                         <p>Tourist &middot; Student &middot; Work</p><a href="#contactSection"
                             class="dest-btn">Apply</a>
                     </div>
                 </div>
-                <div class="dest-card"><img src="assets/images/dest_schengen.png" alt="Europe Schengen">
+                <div class="dest-card" onclick="selectCountry('Japan')"><img src="assets/images/dest_japan.png" alt="Japan">
                     <div class="dest-overlay">
-                        <h3>Schengen</h3>
+                        <h3>Japan</h3>
                         <p>Tourist &middot; Business</p><a href="#contactSection" class="dest-btn">Apply</a>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -259,29 +466,26 @@
             <p class="section-sub center">Four easy steps to get your visa done.</p>
             <div class="how-grid">
                 <div class="how-step">
-                    <div class="how-num">01</div>
+                    <div class="how-num" data-step="01"></div>
                     <div class="how-icon"><i class="fa-solid fa-file-lines"></i></div>
                     <h3>Profile Assessment</h3>
                     <p>Share your details. We assess your profile and identify the right visa category for you.</p>
                 </div>
-                <div class="how-connector"></div>
                 <div class="how-step">
-                    <div class="how-num">02</div>
+                    <div class="how-num" data-step="02"></div>
                     <div class="how-icon"><i class="fa-solid fa-comments"></i></div>
                     <h3>Consultation</h3>
                     <p>Our experts shortlist requirements and schedule a consultation to finalize your documentation.
                     </p>
                 </div>
-                <div class="how-connector"></div>
                 <div class="how-step">
-                    <div class="how-num">03</div>
+                    <div class="how-num" data-step="03"></div>
                     <div class="how-icon"><i class="fa-solid fa-paper-plane"></i></div>
                     <h3>Visa Processing</h3>
                     <p>We handle document preparation, application filing, and embassy submission on your behalf.</p>
                 </div>
-                <div class="how-connector"></div>
                 <div class="how-step">
-                    <div class="how-num">04</div>
+                    <div class="how-num" data-step="04"></div>
                     <div class="how-icon"><i class="fa-solid fa-plane-departure"></i></div>
                     <h3>Travel Ready</h3>
                     <p>Receive your visa and pre/post landing support to ensure a smooth arrival and settlement.</p>
@@ -579,9 +783,9 @@
                             <label>Destination Country</label>
                             <select id="destination">
                                 <option value="" disabled selected>Select Country</option>
-                                <option>UAE (Dubai)</option>
-                                <option>USA</option>
-                                <option>UK</option>
+                                <option>Dubai (UAE)</option>
+                                <option>United States of America (USA)</option>
+                                <option>United Kingdom (UK)</option>
                                 <option>Canada</option>
                                 <option>Australia</option>
                                 <option>Schengen / Europe</option>
@@ -795,8 +999,10 @@
         <div class="container">
             <div class="univ-header">
                 <div class="section-tag center">Study Abroad Guide</div>
-                <h2 class="center">Top Universities & Courses in <span class="gradient-text" id="univCountryTitle">–</span></h2>
-                <p class="section-sub center">Hand-picked top institutions and most popular study programmes for Indian students.</p>
+                <h2 class="center">Top Universities & Courses in <span class="gradient-text"
+                        id="univCountryTitle">–</span></h2>
+                <p class="section-sub center">Hand-picked top institutions and most popular study programmes for Indian
+                    students.</p>
             </div>
             <div class="univ-grid" id="univGrid"></div>
         </div>
@@ -806,10 +1012,11 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="assets/images/logo.png" alt="Explore Overseas" style="max-height:55px;margin-bottom:15px;">
+                <img src="assets/images/EO_Logo%20WebSite%20PNG.png" alt="Explore Overseas"
+                    style="max-height:55px;margin-bottom:15px; filter: brightness(0) invert(1);">
                 <p>A trusted visa assistance platform helping travelers reach their dreams â€“ fast, secure, and
                     stress-free.</p>
-                <p style="margin-top:10px;font-size:0.8rem;color:#64748b;">Licence No:
+                <p style="margin-top:10px;font-size:0.9rem;color:#64748b;">Licence No:
                     Mumbai/properietorship/5926639/2024</p>
             </div>
             <div class="footer-links">
@@ -825,8 +1032,15 @@
                 <h4>Contact</h4>
                 <p><i class="fa-solid fa-phone"></i> +91 95158 13111</p>
                 <p><i class="fa-solid fa-envelope"></i> support@eovisas.com</p>
-                <p><i class="fa-solid fa-location-dot"></i> Hyderabad | Bangalore | Mumbai</p>
-                <p style="margin-top:5px;font-size:0.8rem;color:#64748b;font-style:italic;">Disclaimer: We are an
+                <p><i class="fa-solid fa-location-dot"></i>
+                    <a href="https://www.google.com/maps/search/?api=1&query=EXPLORE+OVERSEAS+%7C+VISA+CONSULTANCY+in+KUKATPALLY,+2nd+floor,+No.+16,+Saroja+Complex,+Kukatpally+Housing+Board+Rd,+near+Metro+Station,+Bhagya+Nagar+Colony,+Kukatpally,+Hyderabad,+Telangana+500072"
+                        target="_blank">Hyderabad</a> |
+                    <a href="https://www.google.com/maps/search/?api=1&query=EXPLORE+OVERSEAS+%7C+VISA+CONSULTANCY+in+HSR+Layout,+1st+floor,+54/1,24th+main,+Parangipalya+Main+Rd,+beside+my+chicken+centre+and+more,+2nd+Sector,+oppsite,+HSR+Layout,+Bengaluru,+Karnataka+560102"
+                        target="_blank">Bangalore</a> |
+                    <a href="https://www.google.com/maps/search/?api=1&query=Explore+Overseas+office+no+1+Ground+floor+Yashoda+building+179/a+Lady+Jamshedji+Rd+opposite+Airtel+Gallery+behind+blue+dart+courier+Dadar+West+Dadar+Mumbai+Maharashtra+400028"
+                        target="_blank">Mumbai</a>
+                </p>
+                <p style="margin-top:5px;font-size:0.9rem;color:#64748b;font-style:italic;">Disclaimer: We are an
                     independent visa assistance service and are not affiliated with any government authority.</p>
             </div>
         </div>
@@ -840,6 +1054,22 @@
     <a href="https://wa.me/919515813111" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- FIREBASE SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // Your Firebase Configuration - REPLACE WITH YOUR KEYS
+        window._firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+    </script>
 
     <script defer src="universities.js"></script>
     <script defer src="script.js"></script>
