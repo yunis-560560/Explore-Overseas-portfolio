@@ -86,6 +86,7 @@
                 <p>Customer Rating</p>
             </div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </header>
 
     <!-- ABOUT -->
@@ -125,6 +126,7 @@
                 </div>
             </div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- SERVICES -->
@@ -207,6 +209,7 @@
             <!-- Country Grid -->
             <div class="vf-grid" id="visaCountryGrid"></div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- POPULAR VISA INSIGHTS -->
@@ -404,6 +407,7 @@
                 <button class="insights-btn next" onclick="scrollInsights(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- DESTINATIONS -->
@@ -513,212 +517,150 @@
                 <p>Dependent on selected country</p>
             </div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- TESTIMONIALS -->
     <section class="testimonials-section" id="testimonialsSection">
-        <div class="container">
-            <div class="section-tag center">Real Reviews</div>
+        <div class="container-fluid">
+            <div class="section-tag center">Client Feedback</div>
             <h2 class="center">What Our <span class="gradient-text">Clients Say</span></h2>
-            <p class="section-sub center">Trusted by hundreds of happy clients across India.</p>
-        </div>
+            <p class="section-sub center">Real stories from our successful travelers.</p>
 
-        <!-- Infinite Scrolling Marquee Row 1 -->
-        <div class="marquee-wrapper">
-            <div class="marquee-track" id="marqueeTrack1">
-                <!-- Card 1 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Very helpful and they have put in good effort to get the visa in just 4 days. I recommend
-                        Explore Overseas. Thankyou."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)">M</div>
-                        <div>
-                            <h4>Manoj</h4><span>Software Engineer</span>
+            <div class="testimonials-marquee-wrapper">
+                <div class="testimonials-marquee">
+                    <div class="marquee-content">
+                        <!-- Akhil -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“I highly recommend “Explore Overseas” to my friends and family who is looking for a great migration agent. Keep up the good work and keep helping others to make their dreams be fulfilled.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #1e3a8a;">A</div>
+                                <div class="t-info"><h4>Akhil</h4><span>Business</span></div>
+                            </div>
                         </div>
+                        <!-- Devaki -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                            <p>“The team guided us patiently and made sure everything was in place. Thanks to their timely help, my parents’ visa was approved without any issues. I highly recommend Explore Overseas.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #7c3aed;">D</div>
+                                <div class="t-info"><h4>Devaki</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Sai Chari -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“Smooth process. Thanks you Explore Overseas. Highly recommended!”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #0ea5e9;">S</div>
+                                <div class="t-info"><h4>Sai Chari</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Shikha -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                            <p>“I am delighted that your team met my expectations and made my experience memorable.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #ec4899;">S</div>
+                                <div class="t-info"><h4>Shikha</h4><span>Software Developer</span></div>
+                            </div>
+                        </div>
+                        <!-- Bharti -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“The entire process was very smooth, we got the visa in 3 working days. Overall experience was good. We recommend Explore Overseas for Visa services.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #c11252;">B</div>
+                                <div class="t-info"><h4>Bharti</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Raghav -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                            <p>“Very professional and fast service by Explore Overseas.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #4b5563;">R</div>
+                                <div class="t-info"><h4>Raghav</h4><span>Business</span></div>
+                            </div>
+                        </div>
+                        <!-- Jayesh -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“Thanks Explore Overseas for prompt service. Do give them a try if you are looking for any visa related thing.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #f59e0b;">J</div>
+                                <div class="t-info"><h4>Jayesh</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Parthiban -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                            <p>“Their professionalism, efficiency, and clear communication truly exceeded my expectations. I’m extremely grateful for their support.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #ef4444;">P</div>
+                                <div class="t-info"><h4>Parthiban</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Adithya -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                            <p>“These guys are extremely professional, transparent, and portrays clear communication. their service charges are also market competitive.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #10b981;">A</div>
+                                <div class="t-info"><h4>Adithya</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Manoj -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“Very helpful and they have put in good effort to get the visa in just 4 days. I recommend explore overseas. Thankyou.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #3b82f6;">M</div>
+                                <div class="t-info"><h4>Manoj</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                        <!-- Babji -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                            <p>“Very happy with their service in getting my visa. I highly recommend!”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #8b5cf6;">B</div>
+                                <div class="t-info"><h4>Babji</h4><span>Business</span></div>
+                            </div>
+                        </div>
+                        <!-- Shailaja -->
+                        <div class="t-card">
+                            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p>“The staff is so good, co operative and available for everything. To be frank it was a best decision to choose Explore Overseas to fulfill my dreams.”</p>
+                            <div class="t-user">
+                                <div class="t-avatar" style="background: #0369a1;">S</div>
+                                <div class="t-info"><h4>Shailaja</h4><span>Software Engineer</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicate for infinite scroll (with same varied ratings) -->
+                    <div class="marquee-content" aria-hidden="true">
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“I highly recommend “Explore Overseas” to my friends and family. Keep up the good work and keep helping others.”</p><div class="t-user"><div class="t-avatar" style="background: #1e3a8a;">A</div><div class="t-info"><h4>Akhil</h4><span>Business</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>“The team guided us patiently and made sure everything was in place. Thanks to their timely help, my parents’ visa was approved.”</p><div class="t-user"><div class="t-avatar" style="background: #7c3aed;">D</div><div class="t-info"><h4>Devaki</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Smooth process. Thanks you Explore Overseas. Highly recommended!”</p><div class="t-user"><div class="t-avatar" style="background: #0ea5e9;">S</div><div class="t-info"><h4>Sai Chari</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>“I am delighted that your team met my expectations and made my experience memorable.”</p><div class="t-user"><div class="t-avatar" style="background: #ec4899;">S</div><div class="t-info"><h4>Shikha</h4><span>Software Developer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“The entire process was very smooth, we got the visa in 3 working days. Overall experience was good. We recommend Explore Overseas.”</p><div class="t-user"><div class="t-avatar" style="background: #c11252;">B</div><div class="t-info"><h4>Bharti</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div><p>“Very professional and fast service by Explore Overseas.”</p><div class="t-user"><div class="t-avatar" style="background: #4b5563;">R</div><div class="t-info"><h4>Raghav</h4><span>Business</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Thanks Explore Overseas for prompt service. Do give them a try if you are looking for any visa related thing.”</p><div class="t-user"><div class="t-avatar" style="background: #f59e0b;">J</div><div class="t-info"><h4>Jayesh</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>“Their professionalism, efficiency, and clear communication truly exceeded my expectations. I’m extremely grateful for their support.”</p><div class="t-user"><div class="t-avatar" style="background: #ef4444;">P</div><div class="t-info"><h4>Parthiban</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>“These guys are extremely professional, transparent, and portrays clear communication. their service charges are market competitive.”</p><div class="t-user"><div class="t-avatar" style="background: #10b981;">A</div><div class="t-info"><h4>Adithya</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Very helpful and they have put in good effort to get the visa in just 4 days. I recommend explore overseas. Thankyou.”</p><div class="t-user"><div class="t-avatar" style="background: #3b82f6;">M</div><div class="t-info"><h4>Manoj</h4><span>Software Engineer</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div><p>“Very happy with their service in getting my visa. I highly recommend!”</p><div class="t-user"><div class="t-avatar" style="background: #8b5cf6;">B</div><div class="t-info"><h4>Babji</h4><span>Business</span></div></div></div>
+                        <div class="t-card"><div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“The staff is so good, co operative and available for everything. To be frank it was a best decision to choose Explore Overseas.”</p><div class="t-user"><div class="t-avatar" style="background: #0369a1;">S</div><div class="t-info"><h4>Shailaja</h4><span>Software Engineer</span></div></div></div>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="t-card featured-card">
-                    <div class="t-quote">"</div>
-                    <p>"Very happy with their service in getting my visa. I highly recommend!"</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">B</div>
-                        <div>
-                            <h4>Babji</h4><span>Business</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"The staff is so good, cooperative and available for each and every thing you wanna know. Coming
-                        to the price it is the best and affordable for everyone compared to the other agencies. It was
-                        the best decision to choose Explore Overseas to fulfill my dreams."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a)">S</div>
-                        <div>
-                            <h4>Shailaja</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Thanks Explore Overseas for prompt service. Do give them a try if you are looking for any visa
-                        related thing."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">J</div>
-                        <div>
-                            <h4>Jayesh</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 5 -->
-                <div class="t-card featured-card">
-                    <div class="t-quote">"</div>
-                    <p>"Their professionalism, efficiency, and clear communication truly exceeded my expectations. I'm
-                        extremely grateful for their support and would highly recommend them to anyone looking for fast
-                        and reliable visa service."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#a855f7)">P</div>
-                        <div>
-                            <h4>Parthiban</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"These guys are extremely professional, transparent, and portray clear communication. Their
-                        service charges are also extremely market competitive."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">A</div>
-                        <div>
-                            <h4>Adithya</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 7 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"I highly recommend Explore Overseas to my friends and family who are looking for a great
-                        migration agent. Keep up the good work and keep helping others to make their dreams be
-                        fulfilled."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#22c55e,#0ea5e9)">A</div>
-                        <div>
-                            <h4>Akhil</h4><span>Business</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 8 -->
-                <div class="t-card featured-card">
-                    <div class="t-quote">"</div>
-                    <p>"The team guided us patiently and made sure everything was in place. Thanks to their timely help,
-                        my parents' visa was approved without any issues. I highly recommend Explore Overseas to anyone
-                        looking for reliable and quick assistance with abroad visa processes."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">D</div>
-                        <div>
-                            <h4>Devaki</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Smooth process. Thank you Explore Overseas. Highly recommended!"</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)">SC</div>
-                        <div>
-                            <h4>Sai Chari</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Duplicates for seamless loop -->
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Very helpful and they have put in good effort to get the visa in just 4 days. I recommend
-                        Explore Overseas. Thankyou."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)">M</div>
-                        <div>
-                            <h4>Manoj</h4><span>Software Engineer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="t-card featured-card">
-                    <div class="t-quote">"</div>
-                    <p>"Very happy with their service in getting my visa. I highly recommend!"</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">B</div>
-                        <div>
-                            <h4>Babji</h4><span>Business</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="t-card">
-                    <div class="t-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>"Their professionalism, efficiency, and clear communication truly exceeded my expectations. I'm
-                        extremely grateful for their support."</p>
-                    <div class="t-author">
-                        <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#a855f7)">P</div>
-                        <div>
-                            <h4>Parthiban</h4><span>Software Engineer</span>
-                        </div>
+            </div>ftware Engineer</span></div></div></div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-next-btn" onclick="scrollToNextSection(this)"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
     <!-- CONTACT -->
@@ -1058,16 +1000,18 @@
     <!-- FIREBASE SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
 
     <script>
         // Your Firebase Configuration - REPLACE WITH YOUR KEYS
         window._firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyBDECIoRLhYBwXEqG9QwgjALZ4iC6z2nIs",
+            authDomain: "explore-overseas-portfolio.firebaseapp.com",
+            projectId: "explore-overseas-portfolio",
+            storageBucket: "explore-overseas-portfolio.firebasestorage.app",
+            messagingSenderId: "500482304151",
+            appId: "1:500482304151:web:ace21fb5d5d8dec68561d2",
+            measurementId: "G-SP5P5PGGT8"
         };
     </script>
 

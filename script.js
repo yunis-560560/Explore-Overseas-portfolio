@@ -6,6 +6,9 @@ try {
     if (typeof firebase !== 'undefined') {
         firebase.initializeApp(window._firebaseConfig || {});
         db = firebase.firestore();
+        if (typeof firebase.analytics === 'function') {
+            firebase.analytics();
+        }
     }
 } catch (e) {
     console.info('Firebase not configured — form data will be logged to console.');
@@ -458,27 +461,98 @@ window.addEventListener('load', () => {
     if (insightsCarousel) window.scrollInsights = (dir) => insightsCarousel.scroll(dir);
 });
 
-// ─── TAB NAVIGATION HANDLER ──────────────────────────────────────────────────
+// ─── SECTION NAVIGATION ────────────────────────────────────────────────────────
+window.scrollToNextSection = function(btn) {
+    const currentSection = btn.closest('header, section');
+    let nextSection = currentSection.nextElementSibling;
+    
+    // Find the next actual section (skip scripts/comments)
+    while (nextSection && !['SECTION', 'HEADER', 'FOOTER'].includes(nextSection.tagName)) {
+        nextSection = nextSection.nextElementSibling;
+    }
+    
+    if (nextSection) {
+        // Rely on CSS scroll-behavior: smooth to avoid conflict with scroll-snap
+        window.scrollTo({
+            top: nextSection.offsetTop
+        });
+    }
+};
+
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
-        // Small delay to let focus land
         setTimeout(() => {
             const activeEl = document.activeElement;
             if (!activeEl) return;
-            
-            // Find the closest section container
             const section = activeEl.closest('header, section, footer');
             if (section) {
-                // Force scroll to section start to ensure snap
-                const sectionTop = section.offsetTop;
                 window.scrollTo({
-                    top: sectionTop,
-                    behavior: 'smooth'
+                    top: section.offsetTop
                 });
             }
-        }, 50);
+        }, 10);
     }
 });
 
 // Init
 renderVisaGrid();
+
+// ─── CONTACT FORM SUBMISSION (FIREBASE) ─────────────────────────────────────────
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // 1. Collect Data
+        const formData = {
+            fullName: document.getElementById('fullName').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            visaType: document.getElementById('visaType').value,
+            destination: document.getElementById('destination').value,
+            message: document.getElementById('message').value.trim(),
+            submittedAt: new Date().toISOString()
+        };
+
+        // 2. Visual Feedback
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+        formStatus.className = 'form-status';
+        formStatus.textContent = '';
+
+        try {
+            if (db) {
+                // 3. Save to Firebase Firestore
+                await db.collection('inquiries').add(formData);
+                
+                formStatus.textContent = "Thank you! Your application has been submitted successfully. We'll contact you soon.";
+                formStatus.classList.add('success');
+                contactForm.reset();
+            } else {
+                // Fallback if Firebase isn't configured
+                console.log('Firebase not configured. Data:', formData);
+                formStatus.textContent = "Firebase is not yet configured with your API keys. Please check the documentation.";
+                formStatus.classList.add('error');
+            }
+        } catch (error) {
+            console.error('Submission Error:', error);
+            formStatus.textContent = "Oops! Something went wrong. Please try again later or contact us directly.";
+            formStatus.classList.add('error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Application';
+            
+            // Auto-hide status after 8 seconds
+            setTimeout(() => {
+                formStatus.style.opacity = '0';
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.style.opacity = '1';
+                }, 500);
+            }, 8000);
+        }
+    });
+}
