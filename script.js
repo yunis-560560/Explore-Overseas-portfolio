@@ -216,46 +216,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ─── CONTACT FORM ───────────────────────────────────────────────────────────────
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const btn = document.getElementById('submitBtn');
-    const status = document.getElementById('formStatus');
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
-    status.textContent = '';
-    status.className = 'form-status';
-
-    const formData = {
-        fullName: document.getElementById('fullName').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        visaType: document.getElementById('visaType').value,
-        destination: document.getElementById('destination').value,
-        message: document.getElementById('message').value,
-        timestamp: new Date().toISOString()
-    };
-
-    try {
-        if (db) {
-            await db.collection("applications").add(formData);
-        } else {
-            console.log("Form Data:", formData);
-            await new Promise(r => setTimeout(r, 800)); // simulate delay
-        }
-        status.textContent = '✅ Application submitted! Our team will contact you within 24 hours.';
-        status.classList.add('status-success');
-        document.getElementById('contactForm').reset();
-    } catch (err) {
-        console.error(err);
-        status.textContent = '❌ Something went wrong. Please try again or call us directly.';
-        status.classList.add('status-error');
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Application';
-    }
-});
 
 // ─── SCROLL REVEAL ANIMATION ────────────────────────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
