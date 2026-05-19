@@ -962,6 +962,10 @@ function initTravelPlannerMap() {
 
     // Run initial calculation to show Dubai (UAE) immediately
     calculateRoute();
+
+    // Convert native select dropdowns to premium custom-styled autocomplete lists
+    convertSelectToCustom('originSelect', 'Search origin state...');
+    convertSelectToCustom('destinationSelect', 'Search destination country...');
 }
 
 function getFormattedDateOffset(days) {
@@ -1205,6 +1209,11 @@ window.calculateRoute = function() {
             duration: 1.5
         });
     }
+
+    // Synchronize custom dropdown selectors
+    if (typeof window.syncCustomSelects === 'function') {
+        window.syncCustomSelects();
+    }
 };
 
 window.applyFromPlanner = function() {
@@ -1215,6 +1224,191 @@ window.applyFromPlanner = function() {
     } else {
         window.location.href = "https://eovisas.com/about#contact";
     }
+};
+
+// Function to dynamically convert select dropdowns into beautiful custom searchable dropdowns matching Image 2
+function convertSelectToCustom(selectId, placeholderText) {
+    const selectEl = document.getElementById(selectId);
+    if (!selectEl) return;
+
+    const selectWrap = selectEl.parentElement;
+    
+    // Hide the native select element
+    selectEl.style.display = 'none';
+
+    // Create the custom select trigger
+    const trigger = document.createElement('div');
+    trigger.className = 'custom-select-trigger';
+    
+    // Get the icon that was in the select-wrap initially
+    const originalIcon = selectWrap.querySelector('i:not(.arrow-icon)') || document.createElement('i');
+    
+    const selectedSpan = document.createElement('span');
+    selectedSpan.className = 'selected-text';
+    selectedSpan.textContent = selectEl.options[selectEl.selectedIndex]?.text || '';
+    
+    const arrow = document.createElement('i');
+    arrow.className = 'fa-solid fa-chevron-down arrow-icon';
+    
+    trigger.appendChild(originalIcon.cloneNode(true));
+    trigger.appendChild(selectedSpan);
+    trigger.appendChild(arrow);
+    selectWrap.appendChild(trigger);
+
+    // Create the custom select dropdown list container
+    const dropdown = document.createElement('div');
+    dropdown.className = 'custom-select-dropdown';
+
+    // Create search wrapper
+    const searchWrap = document.createElement('div');
+    searchWrap.className = 'custom-select-search-wrap';
+    
+    const searchIcon = document.createElement('i');
+    searchIcon.className = 'fa-solid fa-magnifying-glass';
+    
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = placeholderText;
+    searchInput.className = 'custom-select-search';
+    
+    searchWrap.appendChild(searchIcon);
+    searchWrap.appendChild(searchInput);
+    dropdown.appendChild(searchWrap);
+
+    // Create options container
+    const optionsContainer = document.createElement('div');
+    optionsContainer.className = 'custom-select-options';
+    dropdown.appendChild(optionsContainer);
+    selectWrap.appendChild(dropdown);
+
+    // Populate options
+    function populateOptions(filterText = '') {
+        optionsContainer.innerHTML = '';
+        const searchVal = filterText.toLowerCase();
+        
+        let matchCount = 0;
+        for (let i = 0; i < selectEl.options.length; i++) {
+            const opt = selectEl.options[i];
+            const text = opt.text;
+            
+            if (searchVal && !text.toLowerCase().includes(searchVal)) {
+                continue;
+            }
+
+            matchCount++;
+            const item = document.createElement('div');
+            item.className = 'custom-select-option';
+            if (opt.selected) {
+                item.classList.add('selected');
+            }
+
+            // Create blue location pin icon matching Image 2!
+            const pinIcon = document.createElement('i');
+            pinIcon.className = 'fa-solid fa-location-dot';
+            pinIcon.style.color = 'var(--accent)';
+            pinIcon.style.marginRight = '8px';
+            pinIcon.style.fontSize = '0.85rem';
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+
+            item.appendChild(pinIcon);
+            item.appendChild(textSpan);
+
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Update native select
+                selectEl.selectedIndex = i;
+                
+                // Update selected text display
+                selectedSpan.textContent = text;
+                
+                // Close dropdown
+                dropdown.classList.remove('open');
+                trigger.classList.remove('open');
+                
+                // Trigger change event programmatically!
+                selectEl.dispatchEvent(new Event('change'));
+            });
+
+            optionsContainer.appendChild(item);
+        }
+
+        if (matchCount === 0) {
+            const noMatch = document.createElement('div');
+            noMatch.className = 'custom-select-no-match';
+            noMatch.textContent = 'No matching options';
+            optionsContainer.appendChild(noMatch);
+        }
+    }
+
+    // Toggle dropdown visibility
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Close all other custom dropdowns
+        document.querySelectorAll('.custom-select-dropdown').forEach(d => {
+            if (d !== dropdown) {
+                d.classList.remove('open');
+                d.parentElement.querySelector('.custom-select-trigger').classList.remove('open');
+            }
+        });
+
+        const isOpen = dropdown.classList.toggle('open');
+        trigger.classList.toggle('open', isOpen);
+        
+        if (isOpen) {
+            searchInput.value = '';
+            populateOptions();
+            setTimeout(() => searchInput.focus(), 50);
+        }
+    });
+
+    // Search filtering
+    searchInput.addEventListener('input', (e) => {
+        populateOptions(e.target.value);
+    });
+
+    searchInput.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // Close on outside clicks
+    document.addEventListener('click', (e) => {
+        if (!selectWrap.contains(e.target)) {
+            dropdown.classList.remove('open');
+            trigger.classList.remove('open');
+        }
+    });
+
+    // Initialize list
+    populateOptions();
+}
+
+// Global function to keep custom select displays perfectly synchronized with their hidden native select values
+window.syncCustomSelects = function() {
+    ['originSelect', 'destinationSelect'].forEach(id => {
+        const selectEl = document.getElementById(id);
+        if (!selectEl) return;
+        const selectWrap = selectEl.parentElement;
+        const trigger = selectWrap.querySelector('.custom-select-trigger');
+        if (trigger) {
+            const selectedSpan = trigger.querySelector('.selected-text');
+            if (selectedSpan) {
+                selectedSpan.textContent = selectEl.options[selectEl.selectedIndex]?.text || '';
+            }
+            
+            // Highlight selected option in dropdown
+            const dropdown = selectWrap.querySelector('.custom-select-dropdown');
+            if (dropdown) {
+                dropdown.querySelectorAll('.custom-select-option').forEach(item => {
+                    const text = item.querySelector('span').textContent;
+                    item.classList.toggle('selected', text === selectedSpan.textContent);
+                });
+            }
+        }
+    });
 };
 
 // Initial Load Handler additions

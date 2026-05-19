@@ -547,7 +547,7 @@ section h2 {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(15,23,42,0.1);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2165,7 +2165,7 @@ section h2 {
 
 /* ── 20. FOOTER LINKS — color slide on hover ── */
 .footer-links a {
-    background: linear-gradient(90deg, var(--accent2), var(--text));
+    background: linear-gradient(90deg, var(--accent2), #ffffff);
     background-size: 200%;
     background-position: 100%;
     -webkit-background-clip: text;
@@ -2264,7 +2264,7 @@ section h2 {
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 10px;
 }
 
@@ -2372,6 +2372,7 @@ section h2 {
     gap: 30px;
     margin-top: 60px;
     position: relative;
+    align-items: stretch; /* Make all step cards in a row have exactly equal height */
 }
 
 /* Horizontal line behind cards */
@@ -2454,10 +2455,26 @@ section h2 {
     line-height: 1.6;
 }
 
+@media (max-width: 1024px) {
+    .how-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2x2 layout on tablets for optimal spacing */
+        gap: 40px 30px;
+    }
+    
+    .how-grid::before {
+        display: none; /* Hide background horizontal line when wrapped */
+    }
+}
+
 @media (max-width: 768px) {
     .how-grid {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr; /* Stacks cards vertically on phone viewports */
+        justify-items: center; /* Center vertical cards in grid */
+        gap: 45px; /* Clean breathing room between cards */
+    }
+    
+    .how-grid::before {
+        display: none; /* Hide background horizontal line on mobile */
     }
 
     .how-step {
@@ -2489,6 +2506,16 @@ section h2 {
     background-clip: text;
     font-weight: 800 !important;
     font-size: 2.8rem !important;
+}
+
+/* Fix star icon color inside stat-num, overriding text-fill-color gradient to display pristine gold */
+.stat-num i.fa-star {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: #fbbf24 !important;
+    color: #fbbf24 !important;
+    display: inline-block;
 }
 
 .stat-item p {
@@ -2630,6 +2657,8 @@ section h2 {
 
 .footer-links a {
     color: #cbd5e1 !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
+    background: none !important;
     font-size: 1.05rem !important;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -2639,6 +2668,7 @@ section h2 {
 
 .footer-links a:hover {
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 .footer-contact p {
@@ -3418,19 +3448,25 @@ section h2 {
     left: 0;
     transform: translate(-50%, -50%);
     color: var(--accent);
-    font-size: 1rem;
+    font-size: 1.15rem; /* Premium slightly larger scale */
     filter: drop-shadow(0 2px 4px rgba(15,23,42,0.15));
     animation: flightSweep 3s infinite linear;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.airplane-flight-icon i {
+    display: inline-block;
+    transform: rotate(45deg); /* FontAwesome plane points top-right (45deg) by default; rotating 45deg makes it point exactly East */
 }
 
 @keyframes flightSweep {
     0% {
         left: 0%;
-        transform: translate(-50%, -50%) rotate(90deg);
     }
     100% {
         left: 100%;
-        transform: translate(-50%, -50%) rotate(90deg);
     }
 }
 
@@ -3648,4 +3684,187 @@ section h2 {
         box-shadow: none;
         transform: translateY(0);
     }
+}
+
+/* CUSTOM SELECT STYLING MATCHING IMAGE 2 AUTOSUGGESTIONS */
+.custom-select-trigger {
+    width: 100%;
+    padding: 12px 40px 12px 38px; /* Extra padding on right for the arrow */
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    min-height: 46px;
+    user-select: none;
+    position: relative;
+}
+
+.custom-select-trigger:hover {
+    border-color: #cbd5e1;
+}
+
+.custom-select-trigger.open {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.custom-select-trigger .arrow-icon {
+    position: absolute;
+    right: 15px;
+    color: #64748b;
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.custom-select-trigger.open .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    border: 1px solid #e2e8f0;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: dropSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.custom-select-dropdown.open {
+    display: flex;
+}
+
+@keyframes dropSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-select-search-wrap {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    gap: 8px;
+    background: #f8fafc;
+}
+
+.custom-select-search-wrap i {
+    position: static !important;
+    color: #64748b !important;
+    font-size: 0.85rem !important;
+    pointer-events: auto !important;
+}
+
+.custom-select-search {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: 100%;
+    color: #0f172a;
+    background: transparent;
+}
+
+.custom-select-options {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 6px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.custom-select-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-select-options::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+}
+
+.custom-select-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    gap: 4px;
+}
+
+.custom-select-option i {
+    position: static !important;
+    font-size: 0.85rem !important;
+    pointer-events: auto !important;
+}
+
+.custom-select-option:hover {
+    background: #f1f5f9;
+    color: var(--accent);
+}
+
+.custom-select-option.selected {
+    background: #eff6ff;
+    color: var(--accent);
+}
+
+.custom-select-no-match {
+    padding: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* FOOTER SOCIAL MEDIA ICONS */
+.footer-socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+    align-items: center;
+}
+
+.footer-socials a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1.55rem !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-socials a:hover {
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.15);
+    filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.25));
 }
