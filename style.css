@@ -24,8 +24,14 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 0;
+    scroll-padding-top: 95px; /* Perfect top offset to clear the fixed navbar */
+}
+
+/* Enable premium scroll snapping only on large monitors with tall viewports */
+@media (min-width: 1025px) and (min-height: 850px) {
+    html {
+        scroll-snap-type: y proximity;
+    }
 }
 
 body {
@@ -472,35 +478,60 @@ img {
 /* SECTIONS GENERAL */
 section,
 header {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
-    padding: var(--navbar-height) 5% 40px !important;
+    overflow: visible;
+    padding: 110px 5% 60px !important; /* Increased padding top so content never cuts below 80px fixed navbar */
+    box-sizing: border-box;
 }
 
-/* Ensure content doesn't overflow or becomes scrollable if it does */
+/* Ensure container scrolls naturally on laptop screens */
 section .container {
-    max-height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-section .container::-webkit-scrollbar {
-    display: none;
+/* Enable premium scroll snap alignment and height limits only on large monitors with tall viewports */
+@media (min-width: 1025px) and (min-height: 850px) {
+    section,
+    header {
+        height: 100vh;
+        min-height: 100vh;
+        overflow: hidden;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        padding: var(--navbar-height) 5% 40px !important;
+    }
+
+    section .container {
+        max-height: 100%;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    section .container::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 footer {
     padding: 60px 0;
     box-sizing: border-box;
-    scroll-snap-align: start;
     position: relative;
+}
+
+/* Enable footer scroll snap only on large monitors */
+@media (min-width: 1025px) and (min-height: 850px) {
+    footer {
+        scroll-snap-align: start;
+    }
 }
 
 .section-tag {
